@@ -2,17 +2,17 @@ package br.com.carteiradevacinacao.modelo;
 
 public class Usuario {
 
-    private Long   id;
+    private int   id;
     private String nome;
     private String cpf;
     private String dataNacimento;
     private String telefone;
 
-    public Long getId() {
+    public int getId(int i) {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

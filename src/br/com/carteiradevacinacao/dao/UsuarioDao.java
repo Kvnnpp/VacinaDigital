@@ -1,35 +1,39 @@
 package br.com.carteiradevacinacao.dao;
 
-import br.com.carteiradevacinacao.factory.ConnectionFactory;
 import br.com.carteiradevacinacao.modelo.Usuario;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class UsuarioDao {
-    private Connection connection;
 
-    private Long   id;
-    private String nome;
-    private String cpf;
-    private String dataNacimento;
-    private String telefone;
+    private static List<Usuario> usuarios = new ArrayList<>();
 
-    public UsuarioDao(){
-        this.connection = new ConnectionFactory().getConnection();
+    public void adicionar(Usuario usuario) {
+        usuario.setId(usuarios.size() + 1);
+        this.usuarios.add(usuario);
     }
-    public void adiciona(Usuario usuario){
-        String sql ="INSERT INTO usuario(nome,cpf,dataNacimento,telefone)VALUES(?,?,?,?)";
-        try {
-            PreparedStatement stmt = connection.prepareStatement(sql);
-            stmt.setString(1,usuario.getNome());
-            stmt.setString(2, usuario.getCpf());
-            stmt.setString(3, usuario.getDataNacimento());
-            stmt.setString(4, usuario.getTelefone());
+
+    public void editar(Usuario usuario) {
+        remover(usuario);
+        adicionar(usuario);
+    }
+
+    public void remover(Usuario usuario) {
+        this.usuarios.remove(usuario);
+    }
+
+    public Usuario buscar(int usuario) {
+        List<Usuario> usrAchado = usuarios
+                        .stream()
+                        .filter(c -> c.getId(usuario) == usuario)
+                        .collect(Collectors.toList());
+        if(!usrAchado.isEmpty()){
+            return usrAchado.get(0);
         }
-        catch (SQLException u) {
-            throw new RuntimeException(u);
-        }
+        return null;
+
     }
 
 }

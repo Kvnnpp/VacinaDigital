@@ -1,9 +1,12 @@
-package br.com.carteiradevacinacao.teste;
+package br.com.carteiradevacinacao.teste.util;
 
+import br.com.carteiradevacinacao.dao.UsuarioDao;
 import br.com.carteiradevacinacao.modelo.Usuario;
+import br.com.carteiradevacinacao.teste.Constants;
 import java.util.Scanner;
 
-public class ScanUtil {
+public class ScanUtil
+                extends UsuarioDao {
 
     public static void main (String[] args) {
         dadosUsuario();
@@ -30,6 +33,15 @@ public class ScanUtil {
         System.out.println("Olá "+ usuario.getNome() + "\n Bem vindo a sua Carteira de Vacinação!!!");
 
         System.out.println(usuario);
+        System.out.println("--------------------");
+
+        //// Adicionando o Usuario na Array do Usuario DAO
+        UsuarioDao add = new UsuarioDao();
+        add.adicionar(usuario);
+
+        add.buscar(usuario.getId(1));
+        System.out.println(usuario);
+
     }
 
     //metodo validaResposta
