@@ -4,7 +4,6 @@ import br.com.carteiradevacinacao.modelo.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class UsuarioDao {
 
@@ -24,16 +23,15 @@ public class UsuarioDao {
         this.usuarios.remove(usuario);
     }
 
-    public Usuario buscar(int usuario) {
-        List<Usuario> usrAchado = usuarios
-                        .stream()
-                        .filter(c -> c.getId(usuario) == usuario)
-                        .collect(Collectors.toList());
-        if(!usrAchado.isEmpty()){
-            return usrAchado.get(0);
-        }
-        return null;
-
+    public Usuario buscar(String nomeUsuario) {
+        return usuarios.stream()
+                        .filter(c -> c.getNome().equals(nomeUsuario))
+                        .findFirst()
+                        .orElse(null);
     }
 
+    public UsuarioDao buscarTudo() {
+        usuarios.size();
+        return null;
+    }
 }

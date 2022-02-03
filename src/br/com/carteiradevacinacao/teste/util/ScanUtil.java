@@ -36,24 +36,18 @@ public class ScanUtil
         System.out.println("--------------------");
 
         //// Adicionando o Usuario na Array do Usuario DAO
-        UsuarioDao add = new UsuarioDao();
-        add.adicionar(usuario);
-
-        add.buscar(usuario.getId(1));
-        System.out.println(usuario);
-
+        UsuarioDao usuarioDao = new UsuarioDao();
+        usuarioDao.adicionar(usuario);
     }
 
     //metodo validaResposta
     public static void validaResposta (String resposta){
-        // verificar diferença de .equals par a==
-
         // função
         if (resposta.trim().isEmpty()) {
             System.out.println("Por favor preencha corretamente seus dados!");
         } else {
             //se estiver errado devo solicitar novamente o preenchimento.
-            System.out.println("proxima etapa")  ;
+            System.out.println("proxima etapa");
         }
     }
 
