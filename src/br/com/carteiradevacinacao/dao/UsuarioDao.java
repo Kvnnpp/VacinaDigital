@@ -10,8 +10,8 @@ public class UsuarioDao {
     private static List<Usuario> usuarios = new ArrayList<>();
 
     public void adicionar(Usuario usuario) {
-        usuario.setId(usuarios.size() + 1);
-        this.usuarios.add(usuario);
+        usuario.setId(+ 1);
+        usuarios.add(usuario);
     }
 
     public void editar(Usuario usuario) {
@@ -20,7 +20,7 @@ public class UsuarioDao {
     }
 
     public void remover(Usuario usuario) {
-        this.usuarios.remove(usuario);
+        usuarios.remove(usuario);
     }
 
     public Usuario buscar(String nomeUsuario) {

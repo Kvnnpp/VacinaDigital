@@ -1,9 +1,12 @@
-package br.com.carteiradevacinacao.teste.util;
+package br.com.carteiradevacinacao.util;
 
 import br.com.carteiradevacinacao.dao.UsuarioDao;
 import br.com.carteiradevacinacao.modelo.Usuario;
+import br.com.carteiradevacinacao.service.UsuarioService;
 import br.com.carteiradevacinacao.teste.Constants;
 import java.util.Scanner;
+
+import static br.com.carteiradevacinacao.service.UsuarioService.validaResposta;
 
 public class ScanUtil
                 extends UsuarioDao {
@@ -30,25 +33,18 @@ public class ScanUtil
         usuario.setDataNacimento(leitor.nextLine());
         validaResposta(usuario.getDataNacimento());
 
-        System.out.println("Olá "+ usuario.getNome() + "\n Bem vindo a sua Carteira de Vacinação!!!");
-
+        System.out.println(usuario.getNome() + Constants.BOAS_vINDAS);
+        UsuarioService.adicionaUario(usuario);
         System.out.println(usuario);
-        System.out.println("--------------------");
+        System.out.println(Constants.ADD_LINHA);
 
-        //// Adicionando o Usuario na Array do Usuario DAO
-        UsuarioDao usuarioDao = new UsuarioDao();
-        usuarioDao.adicionar(usuario);
-    }
+        //// Busca usuário na Array do UsuarioDao
+        System.out.println(Constants.INFORME_USUARIO);
 
-    //metodo validaResposta
-    public static void validaResposta (String resposta){
-        // função
-        if (resposta.trim().isEmpty()) {
-            System.out.println("Por favor preencha corretamente seus dados!");
-        } else {
-            //se estiver errado devo solicitar novamente o preenchimento.
-            System.out.println("proxima etapa");
-        }
+        String nome = leitor.nextLine();
+        System.out.println(Constants.PESQUISANDO);
+        UsuarioService.validaUsuario(nome);
+
     }
 
 }
