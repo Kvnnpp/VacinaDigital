@@ -21,29 +21,42 @@ public class ScanUtil
         //Objeto usuario
         Usuario usuario = new Usuario();
 
-        System.out.println(Constants.DIGITE_NOME_COMPLETO);
-        usuario.setNome(leitor.nextLine());
-        validaResposta(usuario.getNome());
+        //Tela de Login
+        System.out.println(Constants.TELA_INICIAL);
+        String menu = leitor.nextLine();
 
-        System.out.println(Constants.DIGITE_CPF);
-        usuario.setCpf(leitor.nextLine());
-        validaResposta(usuario.getCpf());
+        if (menu.equals("1")) {
+            //// Busca usuário na Array do UsuarioDao
+            System.out.println(Constants.INFORME_USUARIO);
 
-        System.out.println(Constants.DIGITE_DATA_DE_NACIMENTO);
-        usuario.setDataNacimento(leitor.nextLine());
-        validaResposta(usuario.getDataNacimento());
+            String nome = leitor.nextLine();
+            System.out.println(Constants.PESQUISANDO);
+            UsuarioService.validaUsuario(nome);
+        } else if(menu.equals("2")) {
 
-        System.out.println(usuario.getNome() + Constants.BOAS_vINDAS);
-        UsuarioService.adicionaUario(usuario);
-        System.out.println(usuario);
-        System.out.println(Constants.ADD_LINHA);
+            System.out.println(Constants.DIGITE_NOME_COMPLETO);
+            usuario.setNome(leitor.nextLine().replaceAll("[^a-zA-Z]", ""));
+            validaResposta(usuario.getNome());
 
-        //// Busca usuário na Array do UsuarioDao
-        System.out.println(Constants.INFORME_USUARIO);
+            System.out.println(Constants.DIGITE_CPF);
+            usuario.setCpf(leitor.nextLine().replaceAll("[^0-9]", ""));
+            validaResposta(usuario.getCpf());
 
-        String nome = leitor.nextLine();
-        System.out.println(Constants.PESQUISANDO);
-        UsuarioService.validaUsuario(nome);
+            System.out.println(Constants.DIGITE_DATA_DE_NACIMENTO);
+            usuario.setDataNacimento(leitor.nextLine().replaceAll("[^0-9]", ""));
+            validaResposta(usuario.getDataNacimento());
+
+            System.out.println(usuario.getNome() + Constants.BOAS_vINDAS);
+            UsuarioService.adicionaUario(usuario);
+            System.out.println(usuario);
+            System.out.println(Constants.ADD_LINHA);
+        }else if(menu.equals("3")) {
+            System.exit(0);
+        }
+
+        dadosUsuario();
+
+
 
     }
 
