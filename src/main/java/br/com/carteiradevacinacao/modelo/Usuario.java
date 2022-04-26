@@ -1,4 +1,4 @@
-package br.com.carteiradevacinacao.modelo;
+package main.java.br.com.carteiradevacinacao.modelo;
 
 public class Usuario {
 

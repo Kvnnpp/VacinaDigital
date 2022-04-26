@@ -1,7 +1,7 @@
-package br.com.carteiradevacinacao.service;
+package main.java.br.com.carteiradevacinacao.service;
 
-import br.com.carteiradevacinacao.dao.UsuarioDao;
-import br.com.carteiradevacinacao.modelo.Usuario;
+import main.java.br.com.carteiradevacinacao.dao.UsuarioDao;
+import main.java.br.com.carteiradevacinacao.modelo.Usuario;
 
 public class UsuarioService {
 
@@ -25,12 +25,13 @@ public class UsuarioService {
     }
 
     //metodo validaUsuario se existe ou não ao buscar na base
-    public static void validaUsuario (String nome){
+    public static Usuario recuperaUsuarioPeloNome(String nome)
+		    throws Exception {
         if (usuarioDao.buscar(nome) != null){
-	    System.out.println(usuarioDao.buscar(nome));
-        }else{
-	    System.out.println("Usuário Inexistente");
+	    return usuarioDao.buscar(nome);
         }
+
+        throw new Exception("Usuário Inexistente");
     }
 
 

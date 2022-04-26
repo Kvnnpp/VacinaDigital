@@ -1,6 +1,6 @@
-package br.com.carteiradevacinacao.teste;
+package main.java.br.com.carteiradevacinacao.teste;
 
-import br.com.carteiradevacinacao.modelo.Usuario;
+import main.java.br.com.carteiradevacinacao.modelo.Usuario;
 
 import java.util.ArrayList;
 

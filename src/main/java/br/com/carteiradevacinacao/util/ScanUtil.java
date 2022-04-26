@@ -1,21 +1,24 @@
 package main.java.br.com.carteiradevacinacao.util;
 
-import br.com.carteiradevacinacao.dao.UsuarioDao;
-import br.com.carteiradevacinacao.modelo.Usuario;
-import br.com.carteiradevacinacao.service.UsuarioService;
-import br.com.carteiradevacinacao.teste.Constants;
+import main.java.br.com.carteiradevacinacao.dao.UsuarioDao;
+import main.java.br.com.carteiradevacinacao.modelo.Usuario;
+import main.java.br.com.carteiradevacinacao.teste.Constants;
+import main.java.br.com.carteiradevacinacao.service.UsuarioService;
+
 import java.util.Scanner;
 
-import static br.com.carteiradevacinacao.service.UsuarioService.validaResposta;
+import static main.java.br.com.carteiradevacinacao.service.UsuarioService.validaResposta;
 
 public class ScanUtil
                 extends UsuarioDao {
 
-    public static void main (String[] args) {
+    public static void main (String[] args)
+                    throws Exception {
         dadosUsuario();
     }
 
-    private static void dadosUsuario() {
+    private static void dadosUsuario()
+                    throws Exception {
         Scanner leitor = new Scanner(System.in);
 
         //Objeto usuario
@@ -29,10 +32,10 @@ public class ScanUtil
             case "1":
                 //// Busca usuário na Array do UsuarioDao
                 System.out.println(Constants.INFORME_USUARIO);
-
                 String nome = leitor.nextLine();
                 System.out.println(Constants.PESQUISANDO);
-                UsuarioService.validaUsuario(nome);
+                usuario = UsuarioService.recuperaUsuarioPeloNome(nome);
+                System.out.println(usuario);
                 break;
             case "2":
                 //Adiciona um novo usuario na ARRAY
@@ -43,6 +46,7 @@ public class ScanUtil
 
                 System.out.println(Constants.DIGITE_CPF);
                 usuario.setCpf(leitor.nextLine().replaceAll("[^0-9]", ""));
+                // return String.format("(%d%d%d) %d%d%d-%d%d%d%d",numbers[0],numbers[1],numbers[2],numbers[3],numbers[4],numbers[5],numbers[6],numbers[7],numbers[8],numbers[9]);
                 validaResposta(usuario.getCpf());
 
                 System.out.println(Constants.DIGITE_DATA_DE_NACIMENTO);

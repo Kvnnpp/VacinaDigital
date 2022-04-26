@@ -1,4 +1,4 @@
-package br.com.carteiradevacinacao.teste;
+package main.java.br.com.carteiradevacinacao.teste;
 
 public class Constants {
 
