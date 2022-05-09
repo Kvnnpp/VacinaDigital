@@ -54,7 +54,7 @@ public class ScanUtil
                 validaResposta(usuario.getDataNacimento());
 
                 System.out.println(usuario.getNome() + Constants.BOAS_vINDAS);
-                UsuarioService.adicionaUario(usuario);
+                UsuarioService.adicionaUsuario(usuario);
                 System.out.println(usuario);
                 System.out.println(Constants.ADD_LINHA);
                 break;

@@ -20,7 +20,7 @@ public class UsuarioService {
     }
 
     // Adiciona o Usuario na Array do Usuario DAO
-    public static void adicionaUario(Usuario usuario) {
+    public static void adicionaUsuario(Usuario usuario) {
         usuarioDao.adicionar(usuario);
     }
 

@@ -48,12 +48,17 @@ public class Usuario {
         this.telefone = telefone;
     }
 
-    @Override
-    public String toString(){
-        return "ID: "+id+"" +
-                        "\n"+ "Nome: "+nome+"" +
-                        "\n"+ "CPF: "+cpf+"" +
-                        "\n"+"Data de Nacimento: "+dataNacimento+"\n";
+    @Override public String toString() {
+        return "Usuario" + '\n' +
+                        "ID: " + id +
+                        '\n' +
+                        "Nome: " + nome +
+                        '\n' +
+                        "CPF: " + cpf +
+                        '\n' +
+                        "Data de Nascimento: " + dataNacimento +
+                        '\n' +
+                        "Telefone: " + telefone +
+                        '\n';
     }
-
 }
