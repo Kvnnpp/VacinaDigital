@@ -9,8 +9,7 @@ import java.util.Scanner;
 
 import static main.java.br.com.carteiradevacinacao.service.UsuarioService.validaResposta;
 
-public class ScanUtil
-                extends UsuarioDao {
+public class ScanUtil {
 
     public static void main (String[] args)
                     throws Exception {
@@ -26,9 +25,9 @@ public class ScanUtil
 
         //Tela de Login
         System.out.println(Constants.TELA_INICIAL);
-        String menu = leitor.nextLine();
+        String menuPrincipal = leitor.nextLine();
 
-        switch (menu) {
+        switch (menuPrincipal) {
             case "1":
                 //// Busca usuário na Array do UsuarioDao
                 System.out.println(Constants.INFORME_USUARIO);
@@ -36,7 +35,21 @@ public class ScanUtil
                 System.out.println(Constants.PESQUISANDO);
                 usuario = UsuarioService.recuperaUsuarioPeloNome(nome);
                 System.out.println(usuario);
-                break;
+                System.out.println(Constants.TELA_USUARIO);
+
+                String subMenu = leitor.nextLine();
+                switch (subMenu) {
+                    case "1":;
+
+                    case "2":;
+
+                    case "3":
+                        System.out.println(usuario);;
+
+                    case "4":;
+
+                } break;
+                
             case "2":
                 //Adiciona um novo usuario na ARRAY
 
@@ -53,11 +66,12 @@ public class ScanUtil
                 usuario.setDataNacimento(leitor.nextLine().replaceAll("[^0-9]", ""));
                 validaResposta(usuario.getDataNacimento());
 
-                System.out.println(usuario.getNome() + Constants.BOAS_vINDAS);
+                System.out.println(usuario.getNome() + Constants.BOAS_VINDAS);
                 UsuarioService.adicionaUsuario(usuario);
                 System.out.println(usuario);
                 System.out.println(Constants.ADD_LINHA);
                 break;
+                
             case "3":
                 System.exit(0);
         }

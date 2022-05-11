@@ -1,10 +1,13 @@
 package br.com.carteiradevacinacao.modelo;
 
+import main.java.br.com.carteiradevacinacao.modelo.Usuario;
+
 public class Vacina {
 
-    String nomeVacina;
-    String dataInicio;
-    String dataFim;
+    private String nomeVacina;
+    private String dataInicio;
+    private String dataFim;
+    private Usuario usuario;
 
     public String getNomeVacina() {
 	return nomeVacina;
@@ -30,7 +33,27 @@ public class Vacina {
 	this.dataFim = dataFim;
     }
 
+    public Usuario getUsuario() {
+	return this.usuario;
+    }
 
+    public void setUsuario(Usuario usuario) {
+	this.usuario = usuario;
+    }
 
-
+    @Override public String toString() {
+	return "Vacina{"
+			+ "nomeVacina='"
+			+ nomeVacina
+			+ '\''
+			+ ", dataInicio='"
+			+ dataInicio
+			+ '\''
+			+ ", dataFim='"
+			+ dataFim
+			+ '\''
+			+ ", usuario="
+			+ usuario
+			+ '}';
+    }
 }
